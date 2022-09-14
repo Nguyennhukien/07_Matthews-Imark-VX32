@@ -1,3 +1,7 @@
+/*!
+ * API: https://github.com/wjwwood/serial
+ */
+
 #include <QCoreApplication>
 //#include "SerialPort.h"
 #include <QDebug>

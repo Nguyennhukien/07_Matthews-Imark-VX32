@@ -10,6 +10,7 @@ CONFIG -= app_bundle
 SOURCES += \
         SerialPort.cpp \
         VX32Print.cpp \
+        api/unix.cpp \
         main.cpp \
         api/serial.cpp \
         api/win.cpp
@@ -22,6 +23,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     SerialPort.h \
     VX32Print.h \
+    api/unix.h \
     common.h \
     api/serial.h \
     api/v8stdint.h \
