@@ -43,7 +43,7 @@
 #include <sstream>
 #include <exception>
 #include <stdexcept>
-#include <v8stdint.h>
+#include <api/v8stdint.h>
 
 #define THROW(exceptionClass, message) throw exceptionClass(__FILE__, \
 __LINE__, (message) )
@@ -184,6 +184,8 @@ public:
           parity_t parity = parity_none,
           stopbits_t stopbits = stopbits_one,
           flowcontrol_t flowcontrol = flowcontrol_none);
+
+  static Serial *getInstance();
 
   /*! Destructor */
   virtual ~Serial ();
@@ -672,6 +674,7 @@ private:
   size_t
   write_ (const uint8_t *data, size_t length);
 
+  static Serial* mInstance;
 };
 
 class SerialException : public std::exception

@@ -102,7 +102,7 @@ void Serial::SerialImpl::scan()
 //                THROW (IOException, ss.str().c_str());
             }
         } else {
-            qInfo() << QString::fromStdString(strCom) << "is connected.";
+            qInfo() << QString::fromStdString(strCom) << " is connected.";
 
             //close connect
             int ret;
@@ -145,15 +145,15 @@ void Serial::SerialImpl::open ()
         case ERROR_FILE_NOT_FOUND:
             // Use this->getPort to convert to a std::string
             ss << "Specified port, " << this->getPort() << ", does not exist.";
-            THROW (IOException, ss.str().c_str());
+//            THROW (IOException, ss.str().c_str());
         default:
             ss << "Unknown error opening the serial port: " << create_file_err;
-            THROW (IOException, ss.str().c_str());
+//            THROW (IOException, ss.str().c_str());
         }
+    } else {
+        reconfigurePort();
+        is_open_ = true;
     }
-
-    reconfigurePort();
-    is_open_ = true;
 }
 
 void Serial::SerialImpl::reconfigurePort ()

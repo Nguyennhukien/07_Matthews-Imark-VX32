@@ -12,14 +12,15 @@ void SerialPort::test() {
 
     qInfo() << "asdf1";
     try {
-        port.open("COM4");
+        qInfo() << "asdf1";
+        port.open("COM1");
     } catch (...) {
         qInfo() << "asdf2";
 
     }
     port.set_option(asio::serial_port_base::baud_rate(115200));
     qInfo() << "asdf3";
-    while (true) {
+//    while (true) {
         boost::asio::write(port, boost::asio::buffer("\x02"
                                                      "0401032A0\x03"sv));
 
@@ -33,5 +34,5 @@ void SerialPort::test() {
             std::cout << std::hex << std::showbase << " " << i;
         }
         std::cout << std::endl;
-    }
+//    }
 }

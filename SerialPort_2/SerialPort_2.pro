@@ -9,9 +9,10 @@ CONFIG -= app_bundle
 
 SOURCES += \
         SerialPort.cpp \
+        VX32Print.cpp \
         main.cpp \
-        serial.cpp \
-        win.cpp
+        api/serial.cpp \
+        api/win.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -20,9 +21,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     SerialPort.h \
+    VX32Print.h \
     common.h \
-    serial.h \
-    v8stdint.h \
-    win.h
+    api/serial.h \
+    api/v8stdint.h \
+    api/win.h
 
 LIBS += C:\Qt\Tools\mingw1120_64\x86_64-w64-mingw32\lib\libws2_32.a

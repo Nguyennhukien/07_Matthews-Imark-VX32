@@ -63,6 +63,8 @@ private:
   SerialImpl *pimpl_;
 };
 
+Serial* Serial::mInstance=nullptr;
+
 Serial::Serial (const string &port, uint32_t baudrate, serial::Timeout timeout,
                 bytesize_t bytesize, parity_t parity, stopbits_t stopbits,
                 flowcontrol_t flowcontrol)
@@ -70,6 +72,14 @@ Serial::Serial (const string &port, uint32_t baudrate, serial::Timeout timeout,
                                            stopbits, flowcontrol))
 {
   pimpl_->setTimeout(timeout);
+}
+
+Serial *Serial::getInstance()
+{
+    if(mInstance == nullptr) {
+        mInstance = new Serial("COM1");
+    }
+    return mInstance;
 }
 
 Serial::~Serial ()
